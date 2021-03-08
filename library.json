@@ -1,10 +1,10 @@
 {
-    "name": "ArduinoUtilities-PID",
+    "name": "ArduinoUtilities-Encoder",
     "version": "0.0.1",
-    "description": "Proportional Integral Derivative controller for Arduino",
+    "description": "A small library for handling counting and scaling encoders or other sensors with Arduino",
     "repository": {
         "type": "git",
-        "url": "https://github.com/kescholm/ArduinoUtilities-PID.git"
+        "url": "https://github.com/kescholm/ArduinoUtilities-Encoder.git"
     },
     "authors":
     [
