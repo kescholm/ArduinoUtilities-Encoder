@@ -1,6 +1,6 @@
 {
     "name": "ArduinoUtilities-Encoder",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "A small library for handling counting and scaling encoders or other sensors with Arduino",
     "repository": {
         "type": "git",
