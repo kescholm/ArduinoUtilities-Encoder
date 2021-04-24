@@ -1,7 +1,7 @@
 
 /**
  * @file       ArdEncoder.h
- * @author     Kyle Chisholm
+ * @author     Kyle Escholm
  * @brief      Counter encoding and decoding
  *
  * @details
