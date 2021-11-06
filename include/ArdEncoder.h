@@ -13,9 +13,9 @@
 #ifndef ARD_ENCODER_H
 #define ARD_ENCODER_H
 
-#include <stdbool.h>
-#include <stddef.h>
-#include <stdint.h>
+#include <limits>
+#include <cstdint>
+#include <cmath>
 
 /**
  * @defgroup   ArdEncoder Incremental encoder
@@ -29,7 +29,9 @@ enum eArdEncoderResult
 {
     kArdEncoderSuccess = 0,
     kArdEncoderResolutionIsZero,
-    kArdEncoderResolutionTooHigh
+    kArdEncoderResolutionTooHigh,
+    kArdEncoderCountsPerRevIsZero,
+    kArdEncoderValuePerRevIsZero
 };
 
 /**
@@ -124,6 +126,14 @@ inline eArdEncoderResult ArdEncoder::SetParameters(const uint8_t counter_resolut
         result = kArdEncoderResolutionIsZero;
     }
     else if (counter_resolution_bits > 32)
+    {
+        result = kArdEncoderResolutionTooHigh;
+    }
+    else if (counts_per_rev == 0)
+    {
+        result = kArdEncoderCountsPerRevIsZero;
+    }
+    else if (std::fabs(value_per_rev) < std::numeric_limits<float>::epsilon())
     {
         result = kArdEncoderResolutionTooHigh;
     }
