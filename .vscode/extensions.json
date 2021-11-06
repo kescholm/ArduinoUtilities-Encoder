@@ -3,7 +3,7 @@
     // for the documentation about the extensions.json format
     "recommendations": [
         "cschlosser.doxdocgen",
-        "editorconfig.editorconfig",
+        "editorconfig.editorconf",
         "platformio.platformio-ide",
         "xaver.clang-format"
     ]

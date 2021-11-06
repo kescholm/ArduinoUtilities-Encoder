@@ -32,15 +32,15 @@ static void test_encoder_decode(void) {
     // value per revolution
     const double value_per_rev = 360.0;
     // set parameters
-    int result = ard_encoder_set(&encoder, counter_resolution_bits, counts_per_rev, value_per_rev);
-    TEST_ASSERT_EQUAL(0, result);
+    eArdEncoderResult result = encoder.SetParameters(counter_resolution_bits, counts_per_rev, value_per_rev);
+    TEST_ASSERT_EQUAL(kArdEncoderSuccess, result);
     // reset count and value to zero
-    ard_encoder_reset(&encoder, 0, 0.0);
+    encoder.Reset(0, 0.0);
 
     // run
     for (uint32_t k = 0; k < test_steps; ++k) {
         // run decode to get sensor value
-        const double actual = ard_encoder_decode(&encoder, counts[k]);
+        const double actual = encoder.Decode(counts[k]);
         TEST_ASSERT_EQUAL_FLOAT(expected_values[k], actual);
     }
 }
@@ -63,15 +63,15 @@ static void test_encoder_encode(void) {
     // value per revolution
     const double value_per_rev = 360.0;
     // set parameters
-    int result = ard_encoder_set(&encoder, counter_resolution_bits, counts_per_rev, value_per_rev);
-    TEST_ASSERT_EQUAL(0, result);
+    eArdEncoderResult result = encoder.SetParameters(counter_resolution_bits, counts_per_rev, value_per_rev);
+    TEST_ASSERT_EQUAL(kArdEncoderSuccess, result);
     // reset count and value to zero
-    ard_encoder_reset(&encoder, 0, 0.0);
+    encoder.Reset(0, 0.0);
 
     // run
     for (uint32_t k = 0; k < test_steps; ++k) {
         // run encode to get change in counts
-        const int32_t actual = ard_encoder_encode(&encoder, values[k]);
+        const int32_t actual = encoder.Encode(values[k]);
         TEST_ASSERT_EQUAL_INT32(expected_delta_counts[k], actual);
     }
 }
